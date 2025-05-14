@@ -1,0 +1,917 @@
+{
+	"info": {
+		"_postman_id": "d130e304-cd27-4fb0-980c-a80ab841cd48",
+		"name": "jkTech",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38424777"
+	},
+	"item": [
+		{
+			"name": "User-Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"test\",\n    \"email\": \"test@example.com\",\n    \"password\": \"pass123\",\n    \"roles\": [\n      {\n        \"id\": 1,\n        \"name\": \"ROLE_ADMIN\"\n      }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"pass123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJoYXJzaCIsImlhdCI6MTc0NzA2ODk1NSwiZXhwIjoxNzQ3MTU1MzU1fQ.3liKZK37gocyzI8frh1wOXwGve2i-3VIC1xtmfIZ423B9GQ2eTod56JV1qQ6QFXcmDmyP90fQTZfGIWbDhX1gA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_access_token>"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"username\": \"harsh\",\n    \"email\": \"harsh@example.com\",\n    \"roles\": [\n      {\n        \"id\": 2,\n        \"name\": \"ROLE_EDITOR\"\n      }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadDocuments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTQyNSwiZXhwIjoxNzQ3MjA3ODI1fQ.JZDy7_-ET1OcR5bO_gZoodvBLZZ7CXrfFkkOTZN81hEwgvi2xOQ0olu-eg9bDgb5s2Y8SvoGaBB3EznnJweMSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/LENOVO/Pictures/Screenshots/Screenshot (3).png"
+						},
+						{
+							"key": "title",
+							"value": "My Document Title",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Some description",
+							"type": "text"
+						},
+						{
+							"key": "documentTypeId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "keywords",
+							"value": "finance,report",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/documents",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"documents"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UploadMultipleDocuments",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTQyNSwiZXhwIjoxNzQ3MjA3ODI1fQ.JZDy7_-ET1OcR5bO_gZoodvBLZZ7CXrfFkkOTZN81hEwgvi2xOQ0olu-eg9bDgb5s2Y8SvoGaBB3EznnJweMSg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/LENOVO/Pictures/Screenshots/Screenshot (3).png"
+						},
+						{
+							"key": "files",
+							"type": "file",
+							"src": "/C:/Users/LENOVO/Pictures/Screenshots/Screenshot 2025-04-07 170405.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/documents/batch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"documents",
+						"batch"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getDocumentById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/documents/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"documents",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "searchDocumentsByKeyword",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/documents/search?keyword=report&page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"documents",
+						"search"
+					],
+					"query": [
+						{
+							"key": "keyword",
+							"value": "report"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": " deleteDocumentByID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/documents/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"documents",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DocumetsDownload",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/documents/123/download",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"documents",
+						"123",
+						"download"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-RefreshToken",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <REFRESH_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/refresh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"refresh"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-Logout",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-getByID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-SearchByUsername",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "GET /api/v1/users/username/admin",
+					"host": [
+						"GET "
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"username",
+						"admin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-GetAllUser",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users?page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User-deleteById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/users/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QA-askQuestion",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"question\": \"What are the benefits of using Spring Boot?\",\n        \"documentIds\": [101, 102]\n      }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/qa/ask",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"qa",
+						"ask"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "QA-DocumentsRelevant",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMTc2NiwiZXhwIjoxNzQ3MjA4MTY2fQ.N3aL69PdI4paF5gGxPTxVQqDKbGN-2Tj6qQaRslBgB8ay_fqmUKYIIjebQFhWzC-O_7K1A5PBVdZaxWmmUWjBQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/qa/documents/relevant?question=What is Spring Boot?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"qa",
+						"documents",
+						"relevant"
+					],
+					"query": [
+						{
+							"key": "question",
+							"value": "What is Spring Boot?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Storage-Upload",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMjgwMSwiZXhwIjoxNzQ3MjA5MjAxfQ.sQQXU2UxOVswe2XXFPPQKpFuSWTZHzAop-_1FH8FXoS7EIEr5y5DoYrUUOcufy00w8rJLbDRWnOJ9XiAxI4RcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/path/to/your/file.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/storage/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"storage",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllStorageFiles",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMjgwMSwiZXhwIjoxNzQ3MjA5MjAxfQ.sQQXU2UxOVswe2XXFPPQKpFuSWTZHzAop-_1FH8FXoS7EIEr5y5DoYrUUOcufy00w8rJLbDRWnOJ9XiAxI4RcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/storage/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"storage",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DownloadStorageFile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMjgwMSwiZXhwIjoxNzQ3MjA5MjAxfQ.sQQXU2UxOVswe2XXFPPQKpFuSWTZHzAop-_1FH8FXoS7EIEr5y5DoYrUUOcufy00w8rJLbDRWnOJ9XiAxI4RcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/storage/files/sample.pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"storage",
+						"files",
+						"sample.pdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteStorageFile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMjgwMSwiZXhwIjoxNzQ3MjA5MjAxfQ.sQQXU2UxOVswe2XXFPPQKpFuSWTZHzAop-_1FH8FXoS7EIEr5y5DoYrUUOcufy00w8rJLbDRWnOJ9XiAxI4RcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/storage/files/sample.pdf",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"storage",
+						"files",
+						"sample.pdf"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllStoragefile",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTc0NzEyMjgwMSwiZXhwIjoxNzQ3MjA5MjAxfQ.sQQXU2UxOVswe2XXFPPQKpFuSWTZHzAop-_1FH8FXoS7EIEr5y5DoYrUUOcufy00w8rJLbDRWnOJ9XiAxI4RcQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <ADMIN_JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/storage/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"storage",
+						"files"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
